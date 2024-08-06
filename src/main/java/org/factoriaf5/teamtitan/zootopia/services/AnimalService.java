@@ -13,4 +13,9 @@ public class AnimalService {
     public Animal save(Animal animal) {
         return animalRepository.save(animal);
     }
+
+    public void delete(Animal animal) {
+        animalRepository.delete(animal);
+    }
+
 }

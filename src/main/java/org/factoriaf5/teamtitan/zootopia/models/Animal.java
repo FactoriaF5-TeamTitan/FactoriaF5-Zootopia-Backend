@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Animals {
+public class Animal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +20,10 @@ public class Animals {
     private Date date;
     private String image;
 
-    public Animals() {
+    public Animal() {
     }
 
-    public Animals(String name, String type, String family, String genre, Date date, String image) {
+    public Animal(String name, String type, String family, String genre, Date date, String image) {
         this.name = name;
         this.type = type;
         this.family = family;
