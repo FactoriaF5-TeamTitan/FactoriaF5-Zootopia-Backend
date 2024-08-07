@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -32,10 +33,16 @@ public class AnimalController {
         return new ResponseEntity<>(animal, HttpStatus.OK);
     }
 
-    @PutMapping("animal/{id}")
+    @PutMapping("/animal/{id}")
     public ResponseEntity<Animal> editAnimal(@PathVariable Long id, @RequestBody Animal animal) {
         Animal updatedAnimal = animalService.edit(id, animal);
         return new ResponseEntity<>(updatedAnimal, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/animal/{id}")
+    public ResponseEntity<Void> deleteAnimal(@PathVariable Long id) {
+        animalService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

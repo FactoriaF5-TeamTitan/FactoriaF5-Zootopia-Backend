@@ -1,7 +1,5 @@
 package org.factoriaf5.teamtitan.zootopia.services;
 
-import java.sql.Date;
-
 import org.factoriaf5.teamtitan.zootopia.models.Animal;
 import org.factoriaf5.teamtitan.zootopia.repositories.AnimalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +14,8 @@ public class AnimalService {
         return animalRepository.save(animal);
     }
 
-    public void delete(Animal animal) {
-        animalRepository.delete(animal);
+    public void delete(Long id) {
+        animalRepository.deleteById(id);
     }
 
     public Animal getAnimalById(Long id) {
