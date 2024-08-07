@@ -1,5 +1,7 @@
 package org.factoriaf5.teamtitan.zootopia.controllers;
 
+import java.util.List;
+
 import org.factoriaf5.teamtitan.zootopia.models.Animal;
 import org.factoriaf5.teamtitan.zootopia.services.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,11 @@ public class AnimalController {
         Animal newAnimal = animalService.save(animal);
         return new ResponseEntity<>(newAnimal, HttpStatus.OK);
 
+    }
+
+    @GetMapping("/animals")
+    public List<Animal> fetchAllAnimals() {
+        return animalService.getAllAnimals();
     }
 
     @GetMapping("/animal/{id}")
