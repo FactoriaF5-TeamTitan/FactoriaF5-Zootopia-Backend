@@ -17,6 +17,16 @@ public class Animal {
     private String type;
     private String family;
     private String genre;
+    private String country;
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     private Date date;
     private String image;
 
