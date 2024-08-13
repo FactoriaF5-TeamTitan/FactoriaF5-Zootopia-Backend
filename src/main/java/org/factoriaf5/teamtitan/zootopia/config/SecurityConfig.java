@@ -20,6 +20,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
@@ -48,8 +50,6 @@ public class SecurityConfig {
                                 .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
                                 .requestMatchers( HttpMethod.POST, endpoint + "/register").permitAll()
                                 .requestMatchers(HttpMethod.GET, endpoint + "/login").hasAnyRole("USER","ADMIN")
-                                .requestMatchers(HttpMethod.GET, endpoint + "/countries").hasAnyRole("USER", "ADMIN")
-                                .requestMatchers(HttpMethod.POST, endpoint + "/countries").hasRole("ADMIN")
                                 .anyRequest().authenticated())
                         .userDetailsService(jpaUserDetailsService)
                         .httpBasic(withDefaults())
@@ -65,11 +65,13 @@ public class SecurityConfig {
         CorsConfigurationSource corsConfiguration() {
                 CorsConfiguration configuration = new CorsConfiguration();
                 configuration.setAllowCredentials(true);
-                configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
+                //configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080"));
+                configuration.setAllowedOrigins(Arrays.asList("*"));
                 configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
                 configuration.setAllowedHeaders(Arrays.asList("Content-Type","Authorization"));
                 UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
                 source.registerCorsConfiguration("/**", configuration);
+                System.out.println("CORS configuration applied");
                 return source;
         }
 
