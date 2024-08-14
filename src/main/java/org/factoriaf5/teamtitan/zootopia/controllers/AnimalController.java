@@ -52,4 +52,9 @@ public class AnimalController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/animals/size")
+    public Integer getDataDashboard() {
+        return animalService.getAllAnimals().size();
+    }
+
 }
