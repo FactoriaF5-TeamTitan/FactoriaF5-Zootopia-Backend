@@ -1,9 +1,7 @@
 # FactoriaF5-Zootopia-Backend
 
-## Docker instructions
+## My diagram :
+![My diagram](<uml.png>)
 
-```
-docker build -t my-mysql-image .
-
-docker run -d --name my-mysql-container -p 3306:3306 my-mysql-image
-```
+## My diagram with https://app.diagrams.net/:
+![My diagram](<dbdiagrama.png>)
